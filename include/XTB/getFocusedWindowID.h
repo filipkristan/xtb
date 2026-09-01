@@ -1,0 +1,7 @@
+#ifndef GETFOCUSEDWINDOWID_GETFOCUSEDWINDOWID_HH
+#define GETFOCUSEDWINDOWID_GETFOCUSEDWINDOWID_HH
+#include <X11/Xlib.h>
+
+char *getFocusedWindowID();
+
+#endif
