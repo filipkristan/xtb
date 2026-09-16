@@ -6,7 +6,7 @@
 
 // NOTES: Add error handling!
 char *getWindowTitle(const char *wid) {
-    Display *display = XOpenDisplay((char *) NULL);
+    Display *display = XOpenDisplay(NULL);
     if (!display) {
         fprintf(stderr, "Cannot open display\n");
     }

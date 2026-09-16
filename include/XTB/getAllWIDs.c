@@ -6,7 +6,7 @@
 
 // NOTES: Add error handling!
 void getAllWIDs(char storage[][COLS]) {
-    Display *display = XOpenDisplay((char *) NULL);
+    Display *display = XOpenDisplay(NULL);
     if (!display) {
         fprintf(stderr, "Cannot open display\n");
     }

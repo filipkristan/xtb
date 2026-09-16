@@ -7,7 +7,7 @@
 RGB getColorAt(int x, int y) {
     RGB res;
     XColor c;
-    Display *display = XOpenDisplay((char *) NULL);
+    Display *display = XOpenDisplay(NULL);
     if (!display) {
         fprintf(stderr, "Cannot open display\n");
     }

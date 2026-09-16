@@ -5,7 +5,7 @@
 
 // NOTES: Add error handling!
 void closeWindow(const char *wid) {
-    Display *display = XOpenDisplay((char *) NULL);
+    Display *display = XOpenDisplay(NULL);
     if (!display) {
         fprintf(stderr, "Cannot open display\n");
     }

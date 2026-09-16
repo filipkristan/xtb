@@ -6,7 +6,7 @@
 
 // NOTES: Needs checks for when a window doesn't exist
 void minimizeWindow(const char *wid) {
-    Display *display = XOpenDisplay((char *) NULL);
+    Display *display = XOpenDisplay(NULL);
     if (!display) {
         fprintf(stderr, "Cannot open display\n");
     }

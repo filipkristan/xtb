@@ -2,7 +2,7 @@
 #include <XTB/xtb.h>
 
 void main() {
-    Display *display = XOpenDisplay((char *) NULL);
+    Display *display = XOpenDisplay(NULL);
     if (!display) {
         fprintf(stderr, "Cannot open display\n");
     }

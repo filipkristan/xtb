@@ -6,4 +6,4 @@ typedef struct {
     int height;
 } WH;
 
-#endif //XTB_MISC_H
+#endif

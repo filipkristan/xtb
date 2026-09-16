@@ -6,7 +6,7 @@
 
 // NOTES: Add error handling and update it to resize the window even if its maximized.
 void resizeWindow(const char *wid, unsigned int width, unsigned int height) {
-    Display *display = XOpenDisplay((char *) NULL);
+    Display *display = XOpenDisplay(NULL);
     Window window = strtoul(wid,NULL, 0);
     if (!display) {
         fprintf(stderr, "Cannot open display\n");

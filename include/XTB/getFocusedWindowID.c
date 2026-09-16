@@ -5,7 +5,7 @@
 
 // NOTES: Add error handling!
 char *getFocusedWindowID() {
-    Display *display = XOpenDisplay((char *) NULL);
+    Display *display = XOpenDisplay(NULL);
     if (!display) {
         fprintf(stderr, "Cannot open display\n");
     }

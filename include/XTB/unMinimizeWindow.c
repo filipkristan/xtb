@@ -5,7 +5,7 @@
 
 // NOTES: Needs checks for when a window doesn't exist or if it failed to unminimize a window
 void unMinimizeWindow(const char *wid) {
-    Display *display = XOpenDisplay((char *) NULL);
+    Display *display = XOpenDisplay(NULL);
     if (!display) {
         fprintf(stderr, "Cannot open display\n");
     }

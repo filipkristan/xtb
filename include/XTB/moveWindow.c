@@ -5,7 +5,7 @@
 
 // NOTES: Add error handling
 void moveWindow(const char *wid, int x, int y) {
-    Display *display = XOpenDisplay((char *) NULL);
+    Display *display = XOpenDisplay(NULL);
     Window window = strtoul(wid,NULL, 0);
     if (!display) {
         fprintf(stderr, "Cannot open display\n");
