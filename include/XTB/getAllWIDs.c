@@ -17,7 +17,6 @@ void getAllWIDs(char storage[][COLS]) {
     int format;
     unsigned long nItems, remainder;
     unsigned char *list = NULL;
-    char data[ROWS][COLS];
 
 
     atom_net_client_list = XInternAtom(display, atom_name,True);
@@ -29,7 +28,7 @@ void getAllWIDs(char storage[][COLS]) {
     }
 
     // XA_WINDOW is used for x11 to know
-    if (XGetWindowProperty(display, root, atom_net_client_list, 0, (~0L),False,XA_WINDOW, &type, &format,
+    if (XGetWindowProperty(display, root, atom_net_client_list, 0, (~0L), False,XA_WINDOW, &type, &format,
                            &nItems, &remainder, &list) != Success) {
         fprintf(stderr, "Failed to get _NET_CLIENT_LIST property\n");
         XCloseDisplay(display);
@@ -38,12 +37,28 @@ void getAllWIDs(char storage[][COLS]) {
     if (list == NULL || nItems == 0) {
         XCloseDisplay(display);
     }
-
+    Atom atom_desktop = XInternAtom(display, "_NET_WM_DESKTOP", True);
     // NOTE: Unsigned long int must be used instead of int because "Window" is a unsigned long int
     Window *windows = (Window *) list;
     for (unsigned long int i = 0; i < nItems; ++i) {
         // Formats it in a way to turn id to a hex and if its too short it pads 0's to the front
         // printf("0x%08lx\n",  (Window) windows[i]);
+        long desktop = -1;
+        Atom t;
+        int f;
+        unsigned long n;
+        unsigned long r;
+        unsigned char *val = NULL;
+
+        // Not reusing values from above...
+        if (XGetWindowProperty(display, windows[i], atom_desktop,
+                               0, 1, False, XA_CARDINAL,
+                               &t, &f, &n, &r, &val) == Success && val) {
+            desktop = *(long *) val;
+            XFree(val);
+        }
+
+        if (desktop == -1) continue;
         sprintf(storage[i], "0x%08lx", (Window) windows[i]);
         // printf("Window id: %s\n", WindowList[i]);
     }
@@ -52,7 +67,6 @@ void getAllWIDs(char storage[][COLS]) {
     //     strcpy(data[i], storage[i]);
     //     printf("Window id: %s\n", storage[i]);
     // }
-
 
     XFree(list);
     XCloseDisplay(display);
