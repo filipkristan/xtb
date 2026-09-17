@@ -13,14 +13,14 @@ int main() {
     getAllWIDs(storage);
     for (int i = 0; i < sizeof(storage) / sizeof(storage[0]); ++i) {
         if (strcmp(storage[i], "\0") != 0) {
-
             if (isWindow(storage[i])) {
-                printf("Found window for: %s\n", storage[i]);
+                // printf("Found window for: %s\n", storage[i]);
+                printf("Title: %s\n", getWindowTitle(storage[i]));
             } else {
                 printf("Couldn't find window: %s\n", storage[i]);
                 printf("%hhd", isWindow(storage[i]));
             }
-            // printf("%s\n", getWindowTitle( storage[i]));            0x02200097
+            // printf("%s\n", getWindowTitle(storage[i]));
             //printf("%s\n", getWindowTitle("0x02200097"));
         }
     }
